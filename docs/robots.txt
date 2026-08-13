@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /
+# Preview leaf: noindex until a public Pages 200 and an article DOI exist.

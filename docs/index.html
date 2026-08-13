@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, follow" />
+    <meta
+      name="description"
+      content="B28 methods companion: tumor versus paired-normal proteomes under leave-one-cohort-out. Four figures. Public code not published."
+    />
+    <meta name="theme-color" content="#1d4ed8" />
+    <link rel="canonical" href="https://peterponyu.github.io/b28-site/" />
+    <title>B28 · proteomic transfer · ZF Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&family=Newsreader:opsz,wght@6..72,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/site.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#home">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap-wide header-inner">
+        <a class="wordmark" href="#home">
+          <span class="wordmark-mark" aria-hidden="true">B28</span>
+          <span class="wordmark-name">B28</span>
+        </a>
+        <nav class="nav-primary" aria-label="Primary">
+          <a href="#home">Home</a>
+          <a href="#abstract">Abstract</a>
+          <a href="#figures">Figures</a>
+          <a href="#code">Code</a>
+          <a href="#cite">Cite</a>
+        </nav>
+        <div class="header-chips">
+          <a class="chip" href="https://peterponyu.github.io/">Homepage</a>
+          <a class="chip" href="https://peterponyu.github.io/scportal/">SCPortal</a>
+        </div>
+        <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-nav">
+          <span data-label>Menu</span>
+        </button>
+      </div>
+      <div class="mobile-nav" id="mobile-nav">
+        <nav aria-label="Mobile">
+          <a href="#home">Home</a>
+          <a href="#abstract">Abstract</a>
+          <a href="#figures">Figures</a>
+          <a href="#code">Code</a>
+          <a href="#cite">Cite</a>
+        </nav>
+        <div class="mobile-graph">
+          <a href="https://peterponyu.github.io/">Homepage</a>
+          <a href="https://peterponyu.github.io/scportal/">SCPortal</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="wrap">
+          <p class="kicker">ZF Lab · proteomic transfer</p>
+          <h1>B28</h1>
+          <p class="lead">
+            The object is a held-out tumor proteome versus its paired normal. Six
+            <span class="mono">umich</span> cohorts; the thing that moves is
+            <em>which cancer type is left out</em>, and whether the classifier uses
+            protein-specific abundance or global intensity and missingness.
+          </p>
+          <div class="pills">
+            <a class="pill pill-primary" href="#abstract">Read the abstract</a>
+            <a class="pill pill-ghost" href="#figures">Browse figures</a>
+            <a class="pill pill-ghost" href="https://doi.org/10.5281/zenodo.21870024">Zenodo archive</a>
+          </div>
+          <div class="stats" role="list">
+            <div class="stat-tile" role="listitem">
+              <strong>4</strong>
+              <span>figures (complete gallery)</span>
+            </div>
+            <div class="stat-tile" role="listitem">
+              <strong>6</strong>
+              <span>cohorts under LOGO</span>
+            </div>
+            <div class="stat-tile" role="listitem">
+              <strong>1,191</strong>
+              <span>samples · 695 tumor / 496 normal</span>
+            </div>
+            <div class="stat-tile" role="listitem">
+              <strong>9,675</strong>
+              <span>shared proteins</span>
+            </div>
+          </div>
+          <article class="paper-card">
+            <span class="disc" aria-hidden="true">01</span>
+            <div>
+              <h2>
+                A proteomic tumor classifier is overconfident where it transfers worst, and random
+                cross-validation hides it
+              </h2>
+              <p class="paper-meta">
+                <strong>Fu, Z.</strong>
+                · <em>ACS Journal of Proteome Research</em> (venue default; not attested as submitted)
+              </p>
+              <div class="badges">
+                <a class="badge badge-doi" href="https://doi.org/10.5281/zenodo.21870024">DOI</a>
+                <span class="badge badge-code is-disabled" title="Public HTTPS is not published">Code</span>
+                <span class="badge badge-site is-disabled" title="Site badge after a public 200">Site</span>
+                <a class="badge badge-zenodo" href="https://doi.org/10.5281/zenodo.21870024">Zenodo</a>
+              </div>
+            </div>
+          </article>
+          <aside class="toc-card">
+            <img
+              src="figures/b28_TOC.png"
+              width="325"
+              height="200"
+              alt="Graphical abstract: AUROC versus ECE across six held-out cohorts."
+            />
+            <p>
+              <strong>Graphical abstract (communication only)</strong>
+              Not a fifth results panel. The paper is the four figures below. This TOC restates the
+              AUROC–ECE slice already in Figure 1B.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section" id="holdout" aria-labelledby="holdout-title">
+        <div class="wrap-wide">
+          <h2 class="section-title" id="holdout-title">Held-out cancer type</h2>
+          <p class="deck">
+            Leave-one-cohort-out trains on five proteomes and tests the sixth. Each tile is one
+            held-out tumor versus paired-normal fold. Amber marks where abundance overconfidence is
+            worst. CCRCC is the cohort where a three-feature intensity summary beats full abundance.
+          </p>
+          <div class="cohort-strip">
+            <article class="cohort-card is-hard">
+              <p class="cohort-id">CCRCC</p>
+              <p>194 samples · 110 / 84 T/N</p>
+              <p>AUROC 0.831 · ECE 0.251</p>
+              <span class="chip-oc">trivial 0.933 &gt; abundance</span>
+            </article>
+            <article class="cohort-card">
+              <p class="cohort-id">LUAD</p>
+              <p>213 samples · 111 / 102 T/N</p>
+              <p>AUROC 1.000 · ECE 0.012</p>
+            </article>
+            <article class="cohort-card is-hard">
+              <p class="cohort-id">UCEC</p>
+              <p>152 samples · 103 / 49 T/N</p>
+              <p>AUROC 0.942 · ECE 0.165</p>
+              <span class="chip-oc">overconfident</span>
+            </article>
+            <article class="cohort-card">
+              <p class="cohort-id">HNSCC</p>
+              <p>182 samples · 116 / 66 T/N</p>
+              <p>AUROC 0.980 · ECE 0.033</p>
+            </article>
+            <article class="cohort-card">
+              <p class="cohort-id">LSCC</p>
+              <p>212 samples · 110 / 102 T/N</p>
+              <p>AUROC 0.998 · ECE 0.006</p>
+            </article>
+            <article class="cohort-card is-hard">
+              <p class="cohort-id">PDAC</p>
+              <p>238 samples · 145 / 93 T/N</p>
+              <p>AUROC 0.794 · ECE 0.276</p>
+              <span class="chip-oc">hardest transfer</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt" aria-labelledby="routes-title">
+        <div class="wrap">
+          <h2 class="section-title" id="routes-title">Pick a route</h2>
+          <p class="deck">Paper sections. AUROC and ECE are evidence, not the object.</p>
+          <div class="routes">
+            <a class="route-card card-hover" href="#abstract">
+              <span class="disc disc-lg" aria-hidden="true">01</span>
+              <div>
+                <h3>Abstract</h3>
+                <p>Overconfident where transfer is worst; random CV hides it.</p>
+              </div>
+            </a>
+            <a class="route-card card-hover" href="#figures">
+              <span class="disc disc-lg" aria-hidden="true">02</span>
+              <div>
+                <h3>Figures</h3>
+                <p>Honest four: transfer, ladder, protocol, composition.</p>
+              </div>
+            </a>
+            <a class="route-card card-hover" href="#code">
+              <span class="disc disc-lg" aria-hidden="true">03</span>
+              <div>
+                <h3>Code</h3>
+                <p>Zenodo archive. Public HTTPS is not published.</p>
+              </div>
+            </a>
+            <a class="route-card card-hover" href="#cite">
+              <span class="disc disc-lg" aria-hidden="true">04</span>
+              <div>
+                <h3>Cite</h3>
+                <p>Archive DOI only. No journal article DOI.</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="abstract">
+        <div class="wrap">
+          <h2 class="section-title">Abstract</h2>
+          <p class="deck">Standalone text from the manuscript. No citations, no figure pointers.</p>
+          <div class="abstract-prose">
+            <p>
+              Machine-learning classifiers on mass-spectrometry proteomics are routinely scored by random
+              cross-validation, which mixes multi-cohort samples—and therefore acquisition batches—across
+              the train/test split. On six CPTAC <span class="mono">umich</span> cohorts
+              (<span class="mono">CCRCC</span>, <span class="mono">LUAD</span>,
+              <span class="mono">UCEC</span>, <span class="mono">HNSCC</span>,
+              <span class="mono">LSCC</span>, <span class="mono">PDAC</span>; 1,191 samples × 9,675
+              shared proteins), leave-one-cohort-out (LOGO) tumor-versus-normal classification yields
+              pooled abundance AUROC 0.946 (95% cohort-cluster bootstrap CI 0.857–0.991; per-sample CI
+              0.931–0.958) with expected calibration error (ECE) 0.110.
+            </p>
+            <p>
+              A missingness-mask control is near chance (pooled AUROC 0.500), while a three-feature
+              global-intensity summary already reaches 0.826, so only +0.12 is residual specific
+              high-dimensional abundance. Per-cohort AUROC (0.794–1.000) and ECE (0.006–0.276) move
+              inversely: overconfidence concentrates where transfer is hardest
+              (<span class="mono">PDAC</span>, <span class="mono">CCRCC</span>). Random five-fold CV
+              on the same data reports AUROC 0.993 and ECE 0.021 (ΔAUROC +0.047; ΔECE −0.089).
+            </p>
+            <p>
+              A patient-grouped five-fold arm that never splits a patient's tumor and matched
+              <span class="mono">.N</span> normal matches sample-level random CV (AUROC 0.993, ECE
+              0.016), so pair-splitting does not explain the LOGO gap; a leaky-imputation null under
+              LOGO is negligible. Confidence-ranked abstention raises retained accuracy from 0.845 to
+              1.000 at 10% coverage largely by selecting easy cohorts (≈47%
+              <span class="mono">LUAD</span> + 49% <span class="mono">LSCC</span>; 0%
+              <span class="mono">PDAC</span>/<span class="mono">UCEC</span>). Multi-cohort proteomic
+              classifiers should use grouped splits and per-cohort calibration reporting. This is a
+              high-effect methods audit, not a clinical biomarker claim.
+            </p>
+          </div>
+          <aside class="callout">
+            <h3>Limitation-complete</h3>
+            <p>
+              Pearson <span class="mono">r = −0.96</span> (two decimals; n = 6 is not a large-sample
+              correlation). Exact permutation <span class="mono">p = 0.0028 = 2/720</span>. The
+              unrounded least-squares value is −0.963 and is not treated as large-n precision. The
+              gallery stops at four figures; a decorative 10×4 atlas is not part of this paper.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section section-alt" id="figures">
+        <div class="wrap-wide">
+          <h2 class="section-title">Figures</h2>
+          <p class="deck">
+            Four honest figures. F1–F2 draw the physical object (held-out tumor/normal proteomes;
+            abundance versus intensity). F3 is the evaluation protocol. F4’s physical fact is cohort
+            composition of the retained set.
+          </p>
+          <div class="toolbar" aria-label="Figure index">
+            <a class="filter-chip" href="#fig-f1">F1 transfer</a>
+            <a class="filter-chip" href="#fig-f2">F2 ladder</a>
+            <a class="filter-chip" href="#fig-f3">F3 protocol</a>
+            <a class="filter-chip" href="#fig-f4">F4 composition</a>
+          </div>
+          <div class="four-index">
+            <figure class="figure-card card-hover" id="fig-f1">
+              <button class="thumb" type="button" data-full="figures/b28_F1_transfer.png">
+                <img
+                  src="figures/b28_F1_transfer.png"
+                  alt="Leave-one-cohort-out AUROC by held-out cancer type for abundance, trivial intensity, and missingness, plus AUROC versus ECE."
+                  width="1200"
+                  height="750"
+                />
+              </button>
+              <figcaption>
+                <div class="fig-kicker">
+                  <span class="chip-f">F1</span>
+                  <strong>Transfer</strong>
+                </div>
+                <p>
+                  Object: paired tumor/normal proteomes, one cancer type held out. Process:
+                  leave-one-cohort-out under three feature sets. Metric: per-cohort AUROC and ECE;
+                  r = −0.96, p = 0.0028 = 2/720. CCRCC is the exception where trivial intensity
+                  (0.933) outperforms full abundance (0.831).
+                </p>
+                <div class="fig-links">
+                  <a href="figures/b28_F1_transfer.png">PNG</a>
+                  <a href="figures/b28_F1_transfer.pdf">PDF</a>
+                </div>
+              </figcaption>
+            </figure>
+            <figure class="figure-card card-hover" id="fig-f2">
+              <button class="thumb" type="button" data-full="figures/b28_F2_signal_ladder.png">
+                <img
+                  src="figures/b28_F2_signal_ladder.png"
+                  alt="Pooled AUROC ladder from missingness mask through trivial global intensity to full abundance."
+                  width="1200"
+                  height="750"
+                />
+              </button>
+              <figcaption>
+                <div class="fig-kicker">
+                  <span class="chip-f">F2</span>
+                  <strong>Signal ladder</strong>
+                </div>
+                <p>
+                  Object: what was measured—protein-specific abundance versus global intensity versus
+                  detection missingness. Process: the same LOGO protocol, three feature sets. Metric:
+                  pooled AUROC 0.500 / 0.826 / 0.946. Specific high-dimensional abundance is the
+                  +0.12 residual above the trivial baseline, not the gap above chance.
+                </p>
+                <div class="fig-links">
+                  <a href="figures/b28_F2_signal_ladder.png">PNG</a>
+                  <a href="figures/b28_F2_signal_ladder.pdf">PDF</a>
+                </div>
+              </figcaption>
+            </figure>
+            <figure class="figure-card card-hover" id="fig-f3">
+              <button class="thumb" type="button" data-full="figures/b28_F3_calibration.png">
+                <img
+                  src="figures/b28_F3_calibration.png"
+                  alt="Reliability diagram and pooled ECE for leave-one-cohort-out versus random five-fold cross-validation."
+                  width="1200"
+                  height="750"
+                />
+              </button>
+              <figcaption>
+                <div class="fig-kicker">
+                  <span class="chip-f">F3</span>
+                  <strong>Calibration (protocol)</strong>
+                </div>
+                <p>
+                  Object: evaluation protocol—whether study and batch stay together. Process: LOGO
+                  versus random five-fold on the same matrix. Metric: ECE 0.110 versus 0.021
+                  (AUROC 0.946 versus 0.993). Random CV hides nearly a tenth of a unit of
+                  calibration error.
+                </p>
+                <div class="fig-links">
+                  <a href="figures/b28_F3_calibration.png">PNG</a>
+                  <a href="figures/b28_F3_calibration.pdf">PDF</a>
+                </div>
+              </figcaption>
+            </figure>
+            <figure class="figure-card card-hover" id="fig-f4">
+              <button class="thumb" type="button" data-full="figures/b28_F4_riskcoverage.png">
+                <img
+                  src="figures/b28_F4_riskcoverage.png"
+                  alt="Risk-coverage curve: retained accuracy versus coverage under confidence-ranked abstention."
+                  width="1200"
+                  height="750"
+                />
+              </button>
+              <figcaption>
+                <div class="fig-kicker">
+                  <span class="chip-f">F4</span>
+                  <strong>Risk-coverage / composition</strong>
+                </div>
+                <p>
+                  Object: which cohorts remain when low-confidence cases are deferred. Process:
+                  rank pooled LOGO scores by |p − 0.5|. Metric: retained accuracy 0.845 → 1.000 at
+                  10% coverage. The retained set is ≈47% LUAD and 49% LSCC, with 0% PDAC and UCEC.
+                </p>
+                <div class="fig-links">
+                  <a href="figures/b28_F4_riskcoverage.png">PNG</a>
+                  <a href="figures/b28_F4_riskcoverage.pdf">PDF</a>
+                </div>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="code">
+        <div class="wrap">
+          <h2 class="section-title">Code</h2>
+          <p class="deck">Honest empty panel. No private workbench. No CPTAC fetch.</p>
+          <div class="stack">
+            <div class="empty-panel">
+              <h3>Public HTTPS</h3>
+              <p>
+                A public code URL has not been published. The Code badge stays disabled until a
+                human pastes a real public HTTPS remote. This page does not invent a GitHub slug
+                and does not point at a private workbench.
+              </p>
+            </div>
+            <div class="empty-panel">
+              <h3>Archive</h3>
+              <p>
+                Figure-ready plotdata and the manuscript snapshot live on Zenodo
+                <a href="https://doi.org/10.5281/zenodo.21870024"><span class="mono">10.5281/zenodo.21870024</span></a>.
+                The figure generator <span class="mono">make_b28_figures.R</span> reads locked CSVs
+                and does not download CPTAC.
+              </p>
+              <p>
+                This site does not offer a CPTAC download, a recompute button, or a 10×4 placeholder
+                gallery.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt" id="cite">
+        <div class="wrap">
+          <h2 class="section-title">Cite</h2>
+          <p class="deck">Archive DOI only. Journal article DOI is not assigned.</p>
+          <div class="cite-block">
+            <div class="cite-toolbar">
+              <h3>BibTeX (Zenodo)</h3>
+              <button class="copy-btn" id="copy-bibtex" type="button">Copy BibTeX</button>
+            </div>
+            <pre class="bibtex" id="bibtex">@misc{fu2026proteomic,
+  author       = {Fu, Zeyu},
+  title        = {A proteomic tumor classifier is overconfident where it transfers worst, and random cross-validation hides it},
+  year         = {2026},
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.21870024},
+  url          = {https://doi.org/10.5281/zenodo.21870024},
+  note         = {Archive DOI. Journal article DOI not assigned.}
+}</pre>
+            <p class="visually-hidden" id="copy-status" aria-live="polite"></p>
+            <p class="peerj-line">
+              Fu, Z. (2026). <em>A proteomic tumor classifier is overconfident where it transfers worst,
+              and random cross-validation hides it</em>. Zenodo.
+              <a href="https://doi.org/10.5281/zenodo.21870024">https://doi.org/10.5281/zenodo.21870024</a>.
+              ACS <em>Journal of Proteome Research</em> is the default venue in the capsule, not a
+              claim that the article is submitted or accepted.
+            </p>
+          </div>
+          <article class="related-card follow">
+            <h3>Author</h3>
+            <p>
+              <strong>Zeyu Fu</strong> · Army Medical University · ORCID
+              <a href="https://orcid.org/0009-0001-8329-0108"><span class="mono">0009-0001-8329-0108</span></a>
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-grid">
+        <div>
+          <h2>B28</h2>
+          <p>ZF Lab methods companion. Four figures. Six cohorts. Preview leaf — not deployed.</p>
+        </div>
+        <div>
+          <h3>Browse</h3>
+          <ul>
+            <li><a href="#abstract">Abstract</a></li>
+            <li><a href="#figures">Figures</a></li>
+            <li><a href="#code">Code</a></li>
+            <li><a href="#cite">Cite</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Graph</h3>
+          <ul>
+            <li><a href="https://peterponyu.github.io/">Homepage</a></li>
+            <li><a href="https://peterponyu.github.io/scportal/">SCPortal</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Archive</h3>
+          <ul>
+            <li><a href="https://doi.org/10.5281/zenodo.21870024">Zenodo DOI</a></li>
+            <li><a href="#cite">Citation</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <dialog class="lightbox" id="lightbox" aria-labelledby="lightbox-title">
+      <div class="lightbox-bar">
+        <strong id="lightbox-title">Figure</strong>
+        <button class="lightbox-close" id="lightbox-close" type="button">Close</button>
+      </div>
+      <figure>
+        <img id="lightbox-img" alt="" />
+        <figcaption id="lightbox-caption"></figcaption>
+      </figure>
+    </dialog>
+    <script src="js/site.js"></script>
+  </body>
+</html>
