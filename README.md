@@ -1,6 +1,6 @@
 # b28-site
 
-Science gateway (Next.js static export) for unpublished results.
+Science gateway (Next.js static export) for research code / results.
 
 - Live: https://peterponyu.github.io/b28-site/
 - IA: Home / Results / Methods / Evidence / Claims
