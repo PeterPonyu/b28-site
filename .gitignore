@@ -1,5 +1,26 @@
+# dependencies / build output
 node_modules/
 .next/
 out/
-.env*.local
+
+# env / credentials
+.env
+.env.*
+!.env.example
+
+# AI / agent process artifacts (never on public tree)
+.cursor/
+.cursor.cloud
+.cursorignore
+.claude/
+.codex/
 .omc/
+.omx/
+agent-transcripts/
+*.canvas.tsx
+
+# editor / AI caches
+.vscode/
+.idea/
+*.swp
+.DS_Store
