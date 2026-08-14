@@ -69,12 +69,14 @@ export const RESULTS_FIGURES = [
   {
     "src": "/media/b28_F1_transfer.png",
     "alt": "Transfer performance across held-out cohorts",
-    "caption": "Fig 1 — AUROC and ECE move with held-out cancer type."
+    "caption": "Fig 1 — AUROC and ECE move with held-out cancer type.",
+    "featured": true
   },
   {
     "src": "/media/b28_F2_signal_ladder.png",
     "alt": "Abundance versus intensity signal ladder",
-    "caption": "Fig 2 — protein abundance versus global intensity/missingness."
+    "caption": "Fig 2 — protein abundance versus global intensity/missingness.",
+    "featured": true
   },
   {
     "src": "/media/b28_F3_calibration.png",
