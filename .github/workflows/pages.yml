@@ -16,22 +16,22 @@ concurrency:
   group: pages
   cancel-in-progress: false
 
-env:
-  NEXT_PUBLIC_BASE_PATH: /b28-site
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: npm
-      - run: npm ci
-      - run: npm run build
-      - run: npm run verify
-      - run: rm -rf docs && cp -r out docs
+      - name: Reject unpublished leak strings
+        run: |
+          set -euo pipefail
+          if find docs -name '*.png' -print -quit | grep -q .; then
+            echo 'unpublished figure PNG under docs/' >&2
+            exit 1
+          fi
+          if grep -R -E -i 'unpublished results|AUROC|0\.946|1,191|\b1191\b|SOTA|overconfident|0\.110|r=−0\.963' docs --include='*.html'; then
+            echo 'unpublished leak strings in docs/' >&2
+            exit 1
+          fi
       - name: Upload Pages artifact
         if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa

@@ -1,12 +1,14 @@
 import PageShell from '@/components/PageShell';
-import { METHODS_SUMMARY } from '@/lib/site';
 
-export default function MethodsPage() {
+export default function B28MethodsPage() {
   return (
-    <PageShell title="Methods" kicker="Protocol and scope">
-      <p>{METHODS_SUMMARY}</p>
-      <p className="text-sm text-slate-500">
-        Reproducibility: public code is not published yet. Archive DOI in the header when enabled.
+    <PageShell title="Methods">
+      <p>
+        This route is not published. See{' '}
+        <a className="text-teal-800 underline" href="https://github.com/PeterPonyu/b28-site">
+          the repository
+        </a>
+        .
       </p>
     </PageShell>
   );

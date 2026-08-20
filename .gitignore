@@ -24,3 +24,21 @@ agent-transcripts/
 .idea/
 *.swp
 .DS_Store
+
+# --- security-audit: secrets, agent state, clinical/bulk data ---
+secrets.env
+credentials.json
+*.pem
+*.key
+id_rsa
+.npmrc
+.netrc
+.agent/
+.aider*
+.continue/
+.windsurf/
+spermdata/
+harmonized_donor_samples.csv
+donor_exposure*.csv
+*.h5ad
+/submission/

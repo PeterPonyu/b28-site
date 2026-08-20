@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
 import SiteHeader from '@/components/SiteHeader';
 import FooterSitemap from '@/components/FooterSitemap';
-import { SITE } from '@/lib/site';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: `${SITE.title} — Science Gateway`,
-  description: SITE.lead,
+  title: 'b28-site',
+  description:
+    'Public GitHub Pages leaf for a proteomic tumor-versus-normal transfer evaluation. Not a published article.',
 };
 
 export default function RootLayout({

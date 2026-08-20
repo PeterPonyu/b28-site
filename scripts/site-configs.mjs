@@ -58,7 +58,7 @@ export const SITE_CONFIGS = {
       { value: '0.20', label: 'binding ΔΔG Spearman overall' },
     ],
     resultsFigures: [
-      { src: '/media/F7_binding_boundary.png', alt: 'Binding boundary figure showing interface collapse', caption: 'Fig 7 — binding partner is the strongest physical break (hero).' },
+      { src: '/media/F7_binding_boundary.png', alt: 'Binding boundary figure showing interface collapse', caption: 'Fig 7 — binding-partner break on interface ΔΔG.' },
       { src: '/media/F5_stability_ddg.png', alt: 'Stability ΔΔG calibration', caption: 'Fig 5 — weak fold-stability proxy across homology hold-out.' },
       { src: '/media/F8_developability_map.png', alt: 'Antibody developability liabilities', caption: 'Fig 8 — no BH-significant polyreactivity or aggregation hits.' },
       { src: '/media/F11_boundary_atlas.png', alt: 'Synthesis boundary atlas', caption: 'Fig 11 — synthesis map, not new measurements.' },
@@ -78,39 +78,21 @@ export const SITE_CONFIGS = {
   b28: {
     slug: 'b28-site',
     shortName: 'Proteomic transfer',
-    title:
-      'A proteomic tumor classifier is overconfident where it transfers worst, and random cross-validation hides it',
-    kicker: 'ZF Lab · proteomic transfer',
-    lead: 'The object is a held-out tumor proteome versus its paired normal. Six umich cohorts; the thing that moves is which cancer type is left out, and whether the classifier uses protein-specific abundance or global intensity and missingness.',
+    title: 'b28-site',
+    kicker: 'Proteomic transfer evaluation',
+    lead: 'Public GitHub Pages leaf for a proteomic tumor-versus-normal transfer evaluation under leave-one-cohort-out holdout.',
     physicalObject:
       'Paired tumor and normal proteomes under leave-one-cohort-out holdout.',
-    primaryClaim:
-      'Random cross-validation inflates AUROC and hides miscalibration where LOGO transfer is worst — abundance beats intensity only where signal is trivial.',
+    primaryClaim: '',
     archiveDoi: '10.5281/zenodo.21870024',
     siteUrl: 'https://peterponyu.github.io/b28-site/',
-    mediaSource: 'capsules/b28-proteomics-transfer/docs/figures',
-    stats: [
-      { value: '4', label: 'figures (complete gallery)' },
-      { value: '6', label: 'cohorts under LOGO' },
-      { value: '1,191', label: 'samples · 695 tumor / 496 normal' },
-    ],
-    resultsFigures: [
-      { src: '/media/b28_F1_transfer.png', alt: 'Transfer performance across held-out cohorts', caption: 'Fig 1 — AUROC and ECE move with held-out cancer type.' },
-      { src: '/media/b28_F2_signal_ladder.png', alt: 'Abundance versus intensity signal ladder', caption: 'Fig 2 — protein abundance versus global intensity/missingness.' },
-      { src: '/media/b28_F3_calibration.png', alt: 'LOGO versus random CV calibration', caption: 'Fig 3 — random CV hides overconfidence under LOGO.' },
-      { src: '/media/b28_F4_riskcoverage.png', alt: 'Risk-coverage and cohort composition', caption: 'Fig 4 — retained-set composition bias (LUAD/LSCC).' },
-    ],
-    evidenceTiles: [
-      { value: '0.946', label: 'pooled LOGO AUROC (abundance)' },
-      { value: '0.110', label: 'expected calibration error' },
-      { value: 'r=−0.963', label: 'transfer worst ↔ overconfidence' },
-    ],
+    mediaSource: '',
+    stats: [],
+    resultsFigures: [],
+    evidenceTiles: [],
     methodsSummary:
-      'Six umich proteomic cohorts (CCRCC, LUAD, UCEC, HNSCC, LSCC, PDAC) with leave-one-cohort-out tumor-versus-normal classification. Compare protein-specific abundance to global intensity and missingness features. No new mass-spec measurements — evaluation protocol only.',
-    claims: [
-      { claim: 'Classifier is most overconfident where LOGO transfer is worst.', scope: 'Six cohorts · abundance model · ECE versus held-out type.', refutation: 'Show flat ECE across holdouts under the same LOGO splits.' },
-      { claim: 'Random k-fold CV reports higher AUROC and masks miscalibration.', scope: 'Same 1,191 samples · paired comparison in Fig 3.', refutation: 'Match LOGO calibration under random splits with batch-aware blocking.' },
-    ],
+      'See the repository README. This site does not host a methods write-up.',
+    claims: [],
   },
   spgd: {
     slug: 'SPGD-site',
@@ -121,7 +103,7 @@ export const SITE_CONFIGS = {
     physicalObject:
       'Spot-level cell-type composition across openST, MERFISH, and STARmap substrates.',
     primaryClaim:
-      'Under a zero-tuning budget SPGD is competitive with default SOTA on spatial maps — no method dominates across platform, compartment, and donor axes.',
+      'Spot-level composition error (RMSE) and spatial-map concordance vary by platform, compartment, and donor — no method dominates all three axes under a shared zero-tuning budget.',
     archiveDoi: '10.5281/zenodo.21869991',
     siteUrl: 'https://peterponyu.github.io/SPGD-site/',
     mediaSource: 'capsules/spgd-deconv/docs/figures',
@@ -137,11 +119,11 @@ export const SITE_CONFIGS = {
     ],
     evidenceTiles: [
       { value: '0.91 / 0.84 / 0.55', label: 'tumor / stroma / macrophage PCC' },
-      { value: '3/40', label: 'controlled paired losses vs SOTA panel' },
+      { value: '3/40', label: 'controlled paired losses vs comparison panel' },
       { value: '0', label: 'dataset-specific tuning knobs' },
     ],
     methodsSummary:
-      'Specificity-weighted Poisson self-gating estimator with platform correction. Thirteen methods on eight substrates with bootstrap CIs. Algorithmic constants fixed a priori — training-free, GPU-free, zero-tuning budget versus default SOTA configs.',
+      'Specificity-weighted Poisson self-gating estimator with platform correction. Thirteen methods on eight substrates with bootstrap CIs. Algorithmic constants fixed a priori — training-free, GPU-free, zero-tuning budget versus default comparison configs.',
     claims: [
       { claim: 'SPGD wins most paired comparisons and loses a bounded set on MERFISH and simulation.', scope: '42-cell rank pool · six metrics · bootstrap CIs.', refutation: 'Show a single method dominates all substrates under the same zero-tuning budget.' },
       { claim: 'Spatial maps — not leaderboard rank — carry the biological read.', scope: 'Tumor/stroma/macrophage on real tissue; cross-donor replication.', refutation: 'Demonstrate rank-only gains without map-level concordance on the locked references.' },
