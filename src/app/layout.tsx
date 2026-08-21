@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
 import SiteHeader from '@/components/SiteHeader';
 import FooterSitemap from '@/components/FooterSitemap';
+import { SITE } from '@/lib/site';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'b28-site',
-  description:
-    'Public GitHub Pages leaf for a proteomic tumor-versus-normal transfer evaluation. Not a published article.',
+  title: `${SITE.title} — cohort holdout`,
+  description: SITE.lead,
 };
 
 export default function RootLayout({
@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="flex min-h-screen flex-col">
+      <body className="cohort-holdout flex min-h-screen flex-col">
         <SiteHeader />
         <main className="w-full flex-1">{children}</main>
         <FooterSitemap />

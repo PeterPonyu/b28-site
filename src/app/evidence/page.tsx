@@ -2,13 +2,9 @@ import PageShell from '@/components/PageShell';
 
 export default function B28EvidencePage() {
   return (
-    <PageShell title="Evidence">
+    <PageShell title="Holdout" kicker="Cohort transfer">
       <p>
-        This route is not published. See{' '}
-        <a className="text-teal-800 underline" href="https://github.com/PeterPonyu/b28-site">
-          the repository
-        </a>
-        .
+        This route is not published. See <a href="https://github.com/PeterPonyu/b28-site">the repository</a>.
       </p>
     </PageShell>
   );

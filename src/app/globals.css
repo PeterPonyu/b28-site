@@ -1,50 +1,160 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* b28 cohort-holdout: steel tabular bar, Public Sans. */
 :root {
-  --bg: #f8fafc;
-  --text-h: #0f172a;
-  --text: #334155;
-  --brand: #2563eb;
-  --teal: #0d9488;
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --hold-bg: #eef1f4;
+  --hold-ink: #1f2933;
+  --hold-steel: #3d4d5c;
+  --hold-card: #f7f9fb;
+  --hold-line: #c5d0da;
+  --font-hold: 'Public Sans', 'Segoe UI', sans-serif;
+  --font-hold-mono: 'IBM Plex Mono', ui-monospace, monospace;
 }
 
 @layer base {
   html {
-    font-family: var(--font-sans);
+    font-family: var(--font-hold);
   }
 
-  body {
-    background: var(--bg);
-    color: var(--text-h);
+  body.cohort-holdout {
+    background: var(--hold-bg);
+    color: var(--hold-ink);
+    min-height: 100vh;
     overflow-x: hidden;
-  }
-
-  code,
-  pre,
-  .font-mono {
-    font-family: var(--font-mono);
   }
 }
 
-@layer utilities {
-  .card-hover {
-    transition: box-shadow 0.15s ease, transform 0.15s ease;
-  }
+.hold-head {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--hold-steel);
+  color: #e8eef3;
+}
 
-  .card-hover:hover {
-    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.12);
-    transform: translateY(-1px);
-  }
+.hold-head-row {
+  margin: 0 auto;
+  max-width: 42rem;
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem 1.1rem;
+}
 
-  @media (prefers-reduced-motion: reduce) {
-    .card-hover:hover {
-      transform: none;
-    }
-  }
+.hold-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: inherit;
+  text-decoration: none;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.hold-mark-box {
+  font-family: var(--font-hold-mono);
+  font-size: 0.72rem;
+  background: #e8eef3;
+  color: var(--hold-steel);
+  padding: 0.12rem 0.38rem;
+}
+
+.hold-nav a {
+  color: #d5dee6;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-right: 0.7rem;
+}
+
+.hold-nav a.is-on {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.hold-wrap {
+  margin: 0 auto;
+  max-width: 42rem;
+  padding: 1.8rem 1rem 2.6rem;
+}
+
+.hold-kicker {
+  font-family: var(--font-hold-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--hold-steel);
+}
+
+.hold-title {
+  margin: 0.35rem 0 0;
+  font-size: 1.55rem;
+  font-weight: 700;
+}
+
+.hold-body {
+  margin-top: 0.9rem;
+  line-height: 1.55;
+}
+
+.hold-body > * + * {
+  margin-top: 0.85rem;
+}
+
+.hold-body a {
+  color: var(--hold-steel);
+}
+
+.hold-list {
+  margin: 0.4rem 0 0;
+  padding-left: 1.15rem;
+}
+
+.hold-grid {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 1.1rem;
+}
+
+.hold-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.7rem;
+  background: var(--hold-card);
+  border: 1px solid var(--hold-line);
+  padding: 0.7rem 0.85rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.hold-num {
+  font-family: var(--font-hold-mono);
+  font-size: 0.72rem;
+  color: var(--hold-steel);
+}
+
+.hold-foot {
+  border-top: 1px solid var(--hold-line);
+  background: #e4eaef;
+  font-size: 0.78rem;
+  color: #3d4d5c;
+}
+
+.hold-foot-row {
+  margin: 0 auto;
+  max-width: 42rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1rem;
+  padding: 0.75rem 1rem;
+}
+
+.hold-foot a {
+  color: var(--hold-steel);
 }
