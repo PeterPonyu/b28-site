@@ -1,8 +1,8 @@
 {
-  "name": "laps-pages-gateway-tests",
+  "name": "b28-site-pages-landing-tests",
   "version": "1.0.0",
   "private": true,
-  "description": "Browser policy gate for LAPS GitHub Pages science gateways",
+  "description": "Browser policy gate for the b28-site GitHub Pages code leaf",
   "type": "module",
   "scripts": {
     "test": "playwright test",

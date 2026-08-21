@@ -1,103 +1,39 @@
-/** @typedef {'paper-leaf' | 'scCCVGBen-atlas' | 'scCCVGBen-companion'} SiteKind */
+/** Live b28-site Pages leaf only. Sibling result sites are out of this repo's CI. */
 
-/**
- * Live LAPS paper-gateway surfaces (2026-08-13 deploy table).
- * @type {Array<{
- *   id: string,
- *   label: string,
- *   url: string,
- *   kind: SiteKind,
- *   publishedArticleDoi?: string,
- *   allowBibTeXKit?: boolean,
- *   privateGithubRepos?: string[],
- * }>}
- */
-export const LAPS_GATEWAY_SITES = [
-  {
-    id: 'hetclop',
-    label: 'HetCLOP',
-    url: 'https://peterponyu.github.io/HetCLOP-site/',
-    kind: 'paper-leaf',
-    privateGithubRepos: ['PeterPonyu/HetCLOP'],
-  },
-  {
-    id: 'dpmm',
-    label: 'PanODE-DPMM',
-    url: 'https://peterponyu.github.io/PanODE-DPMM/',
-    kind: 'paper-leaf',
-  },
-  {
-    id: 'topic',
-    label: 'PanODE-Topic',
-    url: 'https://peterponyu.github.io/PanODE-Topic/',
-    kind: 'paper-leaf',
-  },
-  {
-    id: 'mocoo',
-    label: 'MoCoO',
-    url: 'https://peterponyu.github.io/MoCoO/',
-    kind: 'paper-leaf',
-  },
-  {
-    id: 'b1',
-    label: 'B1 cofolding',
-    url: 'https://peterponyu.github.io/b1-site/',
-    kind: 'paper-leaf',
-  },
-  {
-    id: 'a3',
-    label: 'A3 PLM boundary',
-    url: 'https://peterponyu.github.io/a3-site/',
-    kind: 'paper-leaf',
-  },
-  {
-    id: 'b28',
-    label: 'B28 proteomics transfer',
-    url: 'https://peterponyu.github.io/b28-site/',
-    kind: 'paper-leaf',
-  },
-  {
-    id: 'spgd',
-    label: 'SPGD deconv',
-    url: 'https://peterponyu.github.io/SPGD-site/',
-    kind: 'paper-leaf',
-  },
-  {
-    id: 'tessera',
-    label: 'Tessera ST',
-    url: 'https://peterponyu.github.io/tessera-st-site/',
-    kind: 'paper-leaf',
-    privateGithubRepos: ['PeterPonyu/tessera-st'],
-  },
-  {
-    id: 'scccvgben-atlas',
-    label: 'scCCVGBen Hugo atlas',
-    url: 'https://peterponyu.github.io/scCCVGBen/',
-    kind: 'scCCVGBen-atlas',
-    publishedArticleDoi: '10.3389/fgene.2026.1822168',
-    allowBibTeXKit: true,
-  },
-  {
-    id: 'scccvgben-next',
-    label: 'scCCVGBen Next companion',
-    url: 'https://peterponyu.github.io/scccvgben-next/',
-    kind: 'scCCVGBen-companion',
-    publishedArticleDoi: '10.3389/fgene.2026.1822168',
-    allowBibTeXKit: true,
-  },
-];
-
+export const B28_PAGES_URL = 'https://peterponyu.github.io/b28-site/';
 export const HOMEPAGE_URL = 'https://peterponyu.github.io/';
 export const SCPORTAL_URL = 'https://peterponyu.github.io/scportal/';
+export const B28_GITHUB_URL = 'https://github.com/PeterPonyu/b28-site';
 
-/** Frontiers fact DOI — only published article DOI allowed on scCCVGBen surfaces. */
-export const ALLOWED_PUBLISHED_ARTICLE_DOIS = new Set(['10.3389/fgene.2026.1822168']);
+/**
+ * Alias routes that Pages still serves from `docs/` (same landing HTML, HTTP 200).
+ * Must not become a restored results gallery.
+ */
+export const LANDING_ALIAS_ROUTES = [
+  'https://peterponyu.github.io/b28-site/results/',
+  'https://peterponyu.github.io/b28-site/methods/',
+  'https://peterponyu.github.io/b28-site/evidence/',
+  'https://peterponyu.github.io/b28-site/claims/',
+];
 
-/** Zenodo archive prefix — always allowed when real. */
-export const ZENODO_DOI_PREFIX = '10.5281/';
+/**
+ * Unpublished-result tokens that must not appear on the public leaf.
+ * Align with `.github/workflows/pages.yml` fail-closed grep.
+ */
+export const LEAK_TOKENS = [
+  'unpublished results',
+  'AUROC',
+  '0.946',
+  '1,191',
+  '1191',
+  'SOTA',
+  'overconfident',
+  '0.110',
+  'r=−0.963',
+  'r=-0.963',
+];
 
-/** bioRxiv preprint cited as submission packaging — forbidden on all LAPS gateways. */
-export const FORBIDDEN_BIORXIV_DOI = '10.1101/2025.02.01.636000';
+export const ALLOWED_PUBLISHED_ARTICLE_DOIS = new Set([]);
 
 export const VIEWPORTS = {
   desktop: { width: 1280, height: 800 },
