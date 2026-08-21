@@ -148,13 +148,15 @@ test.describe('b28-site Pages landing', () => {
   });
 
   for (const url of LANDING_ALIAS_ROUTES) {
-    test(`Alias route stays landing (not a restored results page): ${new URL(url).pathname}`, async ({ page }) => {
+    test(`Alias route stays unpublished stub (not a restored results page): ${new URL(url).pathname}`, async ({ page }) => {
       const response = await page.goto(url, { waitUntil: 'domcontentloaded' });
-      expect(response?.status(), `${url} should stay HTTP 200 landing from docs/`).toBe(200);
+      expect(response?.status(), `${url} should stay HTTP 200 unpublished stub from docs/`).toBe(200);
       const html = await page.content();
       const text = await visibleBodyText(page);
       const combined = `${text}\n${html}`;
-      expect(combined, `${url} missing landing copy`).toMatch(/does not host results figures/i);
+      expect(combined, `${url} missing unpublished-route copy`).toMatch(
+        /this route is not published|does not host results figures/i,
+      );
       expect(findResultLeaks(combined), `unpublished result tokens on ${url}`).toEqual([]);
       expect(html, `unpublished figure PNG on ${url}`).not.toMatch(/<img\b/i);
     });

@@ -10,7 +10,7 @@ Pages deploys `docs/` directly (no Next build). Assertions match that leaf.
 |---|---|
 | Home | HTTP 200 code-description leaf |
 | Leak tokens | No AUROC / 0.946 / 1191 / unpublished-results / SOTA copy; no `<img>` |
-| Alias routes | `/results/` `/methods/` `/evidence/` `/claims/` stay the same 200 landing from `docs/`, not a restored gallery |
+| Alias routes | `/results/` `/methods/` `/evidence/` `/claims/` stay HTTP 200 unpublished stubs (`This route is not published`), not a restored gallery |
 | Chrome | Sticky header with Homepage + SCPortal |
 | Layout | No horizontal overflow on Home @ 1280 and 390 |
 | Packaging | No venue-intended / under review / BibTeX kit |
