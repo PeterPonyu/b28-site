@@ -1,5 +1,5 @@
 import { withBasePath } from '@/lib/base-path';
-import { ROUTES, SITE } from '@/lib/site';
+import { BADGES, ROUTES, SITE } from '@/lib/site';
 
 export default function FooterSitemap() {
   return (
@@ -17,7 +17,8 @@ export default function FooterSitemap() {
           </a>
         ))}
         <a href={SITE.repo}>Repository</a>
-        <a href="https://doi.org/10.5281/zenodo.21870024">Archive</a>
+        <a href={BADGES.code.href}>Code</a>
+        <a href={BADGES.archive.href}>Archive</a>
       </div>
     </footer>
   );

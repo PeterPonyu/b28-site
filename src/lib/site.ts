@@ -9,7 +9,7 @@ export const SITE = {
   mark: 'PX',
   title: 'b28-site',
   kicker: 'Cohort holdout · paired proteomes',
-  lead: 'Public GitHub Pages leaf for a proteomic tumor-versus-normal transfer evaluation under leave-one-cohort-out holdout.',
+  lead: 'Public GitHub Pages leaf for a proteomic tumor-versus-normal transfer evaluation under leave-one-cohort-out holdout. The code and version archive are an author-review release under SCIENTIFIC_HOLD, not a journal submission or clinical validation.',
   physicalObject: 'Paired tumor and normal proteomes under leave-one-cohort-out holdout.',
   primaryClaim: '',
   homepage: 'https://peterponyu.github.io/',
@@ -31,7 +31,7 @@ export type BadgeConfig = {
 export const BADGES = {
   code: {
     label: 'Code',
-    href: 'https://github.com/PeterPonyu/b28-site',
+    href: 'https://github.com/PeterPonyu/b28-proteomics-transfer',
     enabled: true,
   } satisfies BadgeConfig,
   site: {
@@ -41,7 +41,7 @@ export const BADGES = {
   } satisfies BadgeConfig,
   archive: {
     label: 'Archive',
-    href: 'https://doi.org/10.5281/zenodo.21870024',
+    href: 'https://doi.org/10.5281/zenodo.23101188',
     enabled: true,
   } satisfies BadgeConfig,
   articleDoi: {

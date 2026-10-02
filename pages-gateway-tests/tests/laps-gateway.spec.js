@@ -111,6 +111,13 @@ test.describe('b28-site Pages landing', () => {
     await expect(codeLink, 'Code link to PeterPonyu/b28-site missing').toBeVisible();
   });
 
+  test('Code and Archive point to the current scientific author-review release', async ({ page }) => {
+    await page.goto(B28_PAGES_URL, { waitUntil: 'networkidle' });
+    await expect(page.locator('a[href="https://github.com/PeterPonyu/b28-proteomics-transfer"]').first()).toHaveText('Code');
+    await expect(page.locator('a[href="https://doi.org/10.5281/zenodo.23101188"]').first()).toHaveText('Archive');
+    await expect(page.locator('a[href*="zenodo.21870024"]')).toHaveCount(0);
+  });
+
   test('Fail-closed: no href to private GitHub repos (404)', async ({ page }) => {
     await page.goto(B28_PAGES_URL, { waitUntil: 'networkidle' });
     const hrefs = await page.evaluate(() =>

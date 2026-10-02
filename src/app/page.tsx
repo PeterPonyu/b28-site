@@ -1,5 +1,5 @@
 import RouteCards from '@/components/RouteCards';
-import { SITE } from '@/lib/site';
+import { BADGES, SITE } from '@/lib/site';
 
 export default function B28HomePage() {
   return (
@@ -18,7 +18,10 @@ export default function B28HomePage() {
             <a href={SITE.repo}>github.com/PeterPonyu/b28-site</a>
           </li>
           <li>
-            Archive: <a href="https://doi.org/10.5281/zenodo.21870024">doi.org/10.5281/zenodo.21870024</a>
+            Scientific code: <a href={BADGES.code.href}>PeterPonyu/b28-proteomics-transfer</a>
+          </li>
+          <li>
+            Author-review archive: <a href={BADGES.archive.href}>10.5281/zenodo.23101188</a>
           </li>
         </ul>
         <p>Build notes are in the repository README.</p>

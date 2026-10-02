@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ROUTES, SITE } from '@/lib/site';
+import { BADGES, ROUTES, SITE } from '@/lib/site';
 
 function isActive(pathname: string, href: string): boolean {
   if (href === '/') return pathname === '/';
@@ -37,7 +37,8 @@ export default function SiteHeader() {
             </a>
           ))}
           <a href={SITE.repo}>Repository</a>
-          <a href="https://doi.org/10.5281/zenodo.21870024">Archive</a>
+          <a href={BADGES.code.href}>Code</a>
+          <a href={BADGES.archive.href}>Archive</a>
         </nav>
       </div>
     </header>
